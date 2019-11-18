@@ -1,0 +1,7 @@
+double area(vector<Point>& figure)
+{
+    double sq = 0;
+    for (int i = 0; i < figure.size() - 1; ++i)
+        sq += (figure[i + 1].x - figure[i].x)*(figure[i].y + figure[i + 1].y) / 2.;
+    return sq;
+}
