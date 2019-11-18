@@ -1,0 +1,37 @@
+vector<Point>convexHull(vector<Point> points)
+{
+    Point pStart = points[0];
+    int ind = 0;
+    for (int i = 0; i < points.size(); ++i)
+    {
+        if (pStart.y > points[i].y || (pStart.y == points[i].y && pStart.x > points[i].x))
+        {
+            pStart = points[i];
+            ind = i;
+        }
+    }
+    swap(points[0], points[ind]);
+    sort(points.begin() + 1, points.end(), [&pStart](Point p1, Point p2) {
+        Point v1 = makeVector(pStart, p1);
+        Point v2 = makeVector(pStart, p2);
+        int vp = v1*v2;
+        return vp > 0 || (vp == 0 && v1.len() < v2.len());
+    });
+
+    vector<Point>hull(points.size() + 1);
+    int top = 1;
+    hull[0] = (points[0]);
+    hull[1] = (points[1]);
+
+    for (int i = 2; i < points.size(); ++i)
+    {
+        while (top >= 1 && (makeVector(hull[top], hull[top - 1])*makeVector(points[i], hull[top]) <= 0))
+        {
+            --top;
+        }
+        ++top;
+        hull[top] = points[i];
+    }
+
+    return vector<Point>(hull.begin(), hull.begin() + top + 1);
+}
