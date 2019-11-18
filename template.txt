@@ -1,0 +1,41 @@
+
+//VISUAL ONLY:
+//-----------------------------------
+#define _CRT_SECURE_NO_WARNINGS
+#pragma comment(linker, "/STACK:16777216")
+
+#include <iostream>
+#include<vector>
+#include<string>
+#include<map>
+#include<algorithm>
+#include<deque>
+#include<set>
+#include<queue>
+#include<stack>
+
+//-------------------------------------
+
+//GCC:
+#include <bits/stdc++.h>
+
+using namespace std;
+
+typedef long long ll;
+typedef unsigned long long ull;
+
+int main()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+#ifndef ONLINE_JUDGE //МБ LOCAL
+    freopen("in.txt", "rt", stdin);
+    freopen("out.txt", "wt", stdout);
+#endif 
+
+	return 0;
+}
+
+
+НАДО ДОБАВИТЬ ВРЕМЯ И РАНДОМ
