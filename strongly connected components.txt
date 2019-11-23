@@ -1,0 +1,69 @@
+vector<int>order;
+vector<int>used;
+
+void dfs1(vector<vector<int> >& g, int start)
+{
+    used[start] = 1;
+    for (int i = 0; i < g[start].size(); ++i)
+    {
+        int v = g[start][i];
+        if (!used[v])
+        {
+            dfs1(g, v);
+        }
+    }
+    order.push_back(start);
+}
+//gr - reversed graph
+void dfs2(vector<vector<int> >& gr, vector<int>& comp, int start, int curCompN)
+{
+    used[start] = curCompN;
+    comp.push_back(start);
+    for (int i = 0; i < gr[start].size(); ++i)
+    {
+        int v = gr[start][i];
+        if (!used[v])
+        {
+            dfs2(gr, comp, v, curCompN);
+        }
+    }
+}
+used.assign(n, false);
+for (int i = 0; i < n; ++i)
+{
+    if (!used[i])
+        dfs1(g, i);
+}
+used.assign(n, false);
+vector<vector<int> >componets;
+int x = 1;
+for (int i = 0; i < n; ++i)
+{
+    int v = order[n - i - 1];
+    if (!used[v])
+    {
+        vector<int>comp;
+        dfs2(gr, comp, v, x);
+        componets.push_back(comp);
+        ++x;
+    }
+}
+
+vector<vector<int> >condGraph(componets.size());
+//на этом этапе в used находятся номера компонент связность
+for (int i = 0; i < g.size(); ++i)
+{
+    for (int j = 0; j < g[i].size(); ++j)
+    {
+        if (used[i] != used[g[i][j]])
+            condGraph[used[i] - 1].push_back(used[g[i][j]] - 1);
+    }
+}
+
+/* Это если в списках смежность не нужны повторения
+for (int i = 0; i < condGraph.size(); ++i)
+{
+    set<int>s(condGraph[i].begin(), condGraph[i].end());
+    condGraph[i].assign(s.begin(), s.end());
+}
+*/
