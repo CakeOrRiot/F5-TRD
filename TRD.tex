@@ -1,14 +1,20 @@
 \documentclass[a4paper]{article}
 \usepackage{listings}
 \usepackage{verbatim}
-
 \usepackage[english,russian]{babel}
+\usepackage{lastpage}
 \usepackage[utf8]{inputenc}
 \usepackage[T2A]{fontenc}
+\usepackage{fancyhdr}
 
 \newcommand{\AddSection}[1]{\textbf{#1} \verbatiminput{#1}}
-
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{Page \thepage\ of \pageref{LastPage}}
+\fancyhead[L]{Ural Federal University (Nikolaev,Sobolev,Pozdnyakov)}
 \begin{document}
+
+
 \AddSection{for practice session.txt}
 \AddSection{template.txt}
 
