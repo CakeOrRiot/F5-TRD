@@ -1,3 +1,4 @@
+//ЛЕНЬ ТЕСТИТЬ, МБ БАГИ!
 vector<int>order;
 vector<int>used;
 

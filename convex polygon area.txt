@@ -3,5 +3,6 @@ double area(vector<Point>& figure)
     double sq = 0;
     for (int i = 0; i < figure.size() - 1; ++i)
         sq += (figure[i + 1].x - figure[i].x)*(figure[i].y + figure[i + 1].y) / 2.;
+    sq+=(figure[0].x-figure[figure.size()-1].x)*(figure[figure.size()-1].y+figure[0].y)/2.;
     return sq;
 }
