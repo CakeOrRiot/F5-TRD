@@ -1,13 +1,18 @@
 \documentclass[a4paper]{article}
 \usepackage{listings}
-\usepackage{verbatim}
+%\usepackage{verbatim}
+%\usepackage{scontents}
+%\usepackage{fancyvrb}
+\usepackage{sverb}
 \usepackage[english,russian]{babel}
 \usepackage{lastpage}
 \usepackage[utf8]{inputenc}
 \usepackage[T2A]{fontenc}
 \usepackage{fancyhdr}
+\usepackage[left=1cm,right=2cm,
+    top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+\newcommand{\AddSection}[1]{\textbf{#1} \verbinput{#1}}
 
-\newcommand{\AddSection}[1]{\textbf{#1} \verbatiminput{#1}}
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[R]{Page \thepage\ of \pageref{LastPage}}
@@ -15,16 +20,17 @@
 \begin{document}
 
 
-\AddSection{for practice session.txt}
-\AddSection{template.txt}
+\AddSection{For practice session.txt}
+
+\AddSection{Template.txt}
 
 \section{Number theory} 
+\AddSection{Extended euclid.txt}
 
-\AddSection{extended euclid.txt}
 
-\AddSection{modulo inverse.txt}
-\AddSection{all modulo inverses.txt}
-\AddSection{bigInt.txt}
+\AddSection{Modulo inverse.txt}
+\AddSection{All modulo inverses.txt}
+\AddSection{BigInt.txt}
 
 \section{Data structures}
 
@@ -34,18 +40,18 @@
 
 
 \section{Geometry}
-\AddSection{geometry basics.txt}
+\AddSection{Geometry basics.txt}
 
 \section{Graph}
 \AddSection{Dijkstra.txt}
 \AddSection{Floyd-Warshall.txt}
 \AddSection{Ford-Bellman.txt}
 \section{Game Theory}
-\AddSection{game theory approach.txt}
+\AddSection{Game theory approach.txt}
 
 \section{Strings}
-\AddSection{prefix function.txt}
-\AddSection{manaker.txt}
-\AddSection{suffix automata.txt}
+\AddSection{Prefix function.txt}
+\AddSection{Manaker.txt}
+\AddSection{Suffix automata.txt}
 
 \end{document}
