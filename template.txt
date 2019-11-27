@@ -13,6 +13,7 @@
 #include<set>
 #include<queue>
 #include<stack>
+#include<chrono>
 
 //-------------------------------------
 
@@ -29,13 +30,14 @@ int main()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
+    mt19937 rnd(chrono::steady_clock::now().time_since_epoch().count());
+    //uniform_int_distribution<int>(0, i)(rnd) равномерное распределение
 #ifndef ONLINE_JUDGE //МБ LOCAL
     freopen("in.txt", "rt", stdin);
     freopen("out.txt", "wt", stdout);
-#endif 
+#endif
+    for(int i=0;i<10;++i)
+        cout<<<<'\n';
 
 	return 0;
 }
-
-
-НАДО ДОБАВИТЬ ВРЕМЯ И РАНДОМ. Проверь throw
