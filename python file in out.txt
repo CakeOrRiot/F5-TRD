@@ -1,0 +1,5 @@
+f = open('workfile', 'w') #r read  w write  r+=r+w
+f.readline()
+for line in f:
+	...
+f.write('asda')
