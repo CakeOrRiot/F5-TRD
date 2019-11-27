@@ -36,8 +36,7 @@ int main()
     freopen("in.txt", "rt", stdin);
     freopen("out.txt", "wt", stdout);
 #endif
-    for(int i=0;i<10;++i)
-        cout<<<<'\n';
+
 
 	return 0;
 }
