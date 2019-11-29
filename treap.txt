@@ -1,0 +1,61 @@
+struct tree_node
+{
+	tree_node *left, *right;
+	int key, priority;
+	tree_node(int new_key)
+	{
+		key = new_key;
+		priority = rand();
+		left = right = nullptr;
+	}
+};
+
+pair<tree_node*, tree_node*> split(tree_node *root, int key)
+{
+	if (root == nullptr)
+		return make_pair(nullptr, nullptr);
+	if (root->key < key)
+	{
+		pair<tree_node*, tree_node*> splitted = split(root->right, key);
+		root->right = splitted.first;
+		return make_pair(root, splitted.second);
+	}
+	else
+	{
+		pair<tree_node*, tree_node*> splitted = split(root->left, key);
+		root->left = splitted.second;
+		return make_pair(splitted.first, root);
+	}
+}
+
+tree_node* merge(tree_node *left, tree_node *right)
+{
+	if (left == nullptr || right == nullptr)
+		return right == nullptr ? left : right;
+	if (left->priority > right->priority)
+	{
+		left->right = merge(left->right, right);
+		return left;
+	}
+	else
+	{
+		right->left = merge(left, right->left);
+		return right;
+	}
+}
+
+void insert(tree_node &*root, int key)
+{
+	pair<tree_node*, tree_node*> splitted = split(root, key);
+	merge(merge(splitted.first, new node(key)), splitted.second);
+}
+
+void erase(tree_node &*root, int key)
+{
+	tree_node *left = nullptr, *middle = nullptr, *right = nullptr;
+	split(root, left, middle, key);
+	split(middle, middle, right, key + 1);
+	merge(middle, middle->left, middle->right);
+	merge(root, left, middle);
+	merge(root, root, right);
+}
